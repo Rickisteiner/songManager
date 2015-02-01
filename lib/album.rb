@@ -1,3 +1,5 @@
+require 'active_record'
+
 class Album < ActiveRecord::Base
   def song
     Song.where({album_id: self.id })
