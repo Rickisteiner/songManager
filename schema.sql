@@ -1,16 +1,16 @@
-CREATE TABLE song (
+CREATE TABLE songs (
   ID INTEGER PRIMARY KEY,
   title TEXT,
-  album_id INTEGER references album
+  album_id INTEGER references albums
 );
 
-CREATE TABLE album (
+CREATE TABLE albums (
   ID INTEGER PRIMARY KEY,
   name TEXT, 
-  artist_id INTEGER references artist
+  artist_id INTEGER references artists
 );
 
-CREATE TABLE artist (
+CREATE TABLE artists (
   ID INTEGER PRIMARY KEY,
   name TEXT
 );

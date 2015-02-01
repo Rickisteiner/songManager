@@ -4,44 +4,44 @@ require_relative './lib/songs'
 require_relative './lib/album'
 require_relative './lib/artist'
 
-above = Artist.create({
+above = Artists.create({
   name: "Above & Beyond" 
 })
 
-acoustic = Album.create({
+acoustic = Albums.create({
   name: "Acoustic",
   artist_id: above.id
 })
 
-Song.create({
+Songs.create({
   title: "Sirens of the Sea",
   album_id: acoustic.id
 })
 
-bayer = Artist.create({
+bayer = Artists.create({
   name: "Andrew Bayer"
 })
 
-never = Album.create({
+never = Albums.create({
   name: "If It Were You, We'd Never Leave",
   artist_id: bayer.id
 })
 
-Song.create({
+Songs.create({
   title: "It's Going To Be Fine",
   album_id: never.id
 })
 
-mat = Artist.create({
+mat = Artists.create({
   name: "Ilan Bluestone" 
 })
 
-control = Album.create({
+control = Albums.create({
   name: "Damage Control",
   artist_id: mat.id
 })
 
-Song.create({
+Songs.create({
   title: "The Sky",
   album_id: control.id
 })

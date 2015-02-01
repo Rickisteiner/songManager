@@ -1,8 +1,8 @@
 require 'active_record'
 
-class Artist < ActiveRecord::Base
-	def album
-		Album.where({artist_id: self.id})
+class Artists < ActiveRecord::Base
+	def albums
+		Albums.where({artist_id: self.id})
 	end
 end
 

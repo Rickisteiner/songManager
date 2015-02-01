@@ -3,15 +3,15 @@
 <head>
   <link rel="stylesheet" type="text/css" href="/styles.css">
   <meta charset="UTF-8">
-  <title>Characters</title>
+  <title>Artists</title>
 </head>
 <body>
-  <a href="/characters/new">Create a Character</a>
+  <a href="/artists/new">Create an Artist</a>
   <ul>
-    <% characters.each do |character| %>
+    <% artists.each do |artist| %>
       <li>
-        <a href="/characters/<%= character.id %>">
-        <%= character.name %>
+        <a href="/artists/<%= artist.id %>">
+        <%= artist.name %>
         </a>
       </li>
     <% end %>

@@ -1,8 +1,9 @@
 require 'sinatra'
 require 'sinatra/reloader' #makes it so that you dont have to keep shutting and reloding server
 require_relative './lib/connection'
-require_relative './lib/house'
-require_relative './lib/character'
+require_relative './lib/artists'
+require_relative './lib/albums'
+require_relative './lib/songs'
 require 'pry'
 
 
@@ -14,62 +15,48 @@ get("/") do
   erb(:index)
 end
 
-get("/characters") do
-  erb(:"characters/index", { locals: { characters: Character.all(), } })
+get("/artists") do
+  erb(:"artists/index", { locals: { artists: Artist.all(), } })
 end
 
 get("/characters/new") do
-  erb(:"characters/new", { locals: { houses: House.all(), } })
+  erb(:"artists/new", { locals: { albuns: Album.all(), } })
 end
 
-post("/characters") do
+post("/artists") do
   character_hash = {
-    name: params["name"],
-    image_url: params["url"],
-    house_id: params["house_id"]
+    name: params["name"]
   }
 
-  Character.create(character_hash)
+  Artist.create(character_hash)
 
-  erb(:"characters/index", { locals: { characters: Character.all() } })
+  erb(:"artists/index", { locals: { artists: Artist.all() } })
 end
 
-get("/characters/:id") do
-  character = Character.find_by({id: params[:id]})
-  erb(:"characters/show", { locals: { character: character } })
+get("/artists/:id") do
+  artist = Artist.find_by({id: params[:id]})
+  erb(:"artists/show", { locals: { artist: artist } })
 end
 
-get("/characters/:id/edit") do
-  character = Character.find_by({id: params[:id]})
-  erb(:"characters/edit", { locals: { character: character, houses: House.all() } })
+get("/artists/:id/edit") do
+  artist = Artist.find_by({id: params[:id]})
+  erb(:"artists/edit", { locals: { artist: artist, albums: Album.all() } })
 end
 
-put("/characters/:id") do
+put("/artists/:id") do
   character_hash = {
-    name: params["name"],
-    image_url: params["url"],
-    house_id: params["house_id"]
+    name: params["name"]
   }
 
-  character = Character.find_by({id: params[:id]})
-  character.update(character_hash)
+  artist = Artist.find_by({id: params[:id]})
+  Artist.update(character_hash)
 
-  erb(:"characters/show", { locals: { character: character } })
+  erb(:"artists/show", { locals: { artist: artist } })
 end
 
-delete("/characters/:id") do
-  character = Character.find_by({id: params[:id]})
-  character.destroy
+delete("/artists/:id") do
+  artist = Artist.find_by({id: params[:id]})
+  artist.destroy
 
-  redirect "/characters"
-end
-
-get("/houses") do
-
-  erb(:"houses/index", { locals: { houses: House.all() } })
-end
-
-get("/houses/:id") do
-  house = House.find_by({id: params[:id]})
-  erb(:"houses/show", { locals: { house: house } })
+  redirect "/artists"
 end
